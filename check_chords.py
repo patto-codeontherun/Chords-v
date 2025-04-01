@@ -8,10 +8,7 @@ import os
 # Global variable to stop audio and animation
 stop_audio = False
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 38017970b2ee8ad95ec8c4c0c89c77d4d8457d88
 def analyze_whole_file(file_path):
     y, sr = librosa.load(file_path)
     chroma = librosa.feature.chroma_cqt(y=y, sr=sr, n_chroma=12, n_octaves=7)
@@ -28,11 +25,7 @@ def analyze_whole_file(file_path):
         [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1],  # G
         [1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0],  # G#
         [0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0],  # A
-<<<<<<< HEAD
         [0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0],  # A#
-=======
-        [0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0],  # A#
->>>>>>> 38017970b2ee8ad95ec8c4c0c89c77d4d8457d88
         [0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1],  # B
         [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],  # Cm
         [0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0],  # C#m
@@ -70,7 +63,6 @@ def update_plot(frame, chroma, chords, freqs, ax, text):
         return ax
 
     ax.clear()
-<<<<<<< HEAD
 
     # Equalizer-style bars
     bar_width = 0.6  # Adjust bar width as needed
@@ -93,16 +85,6 @@ def update_plot(frame, chroma, chords, freqs, ax, text):
 
     text.set_text(f"Time: {frame * 512 / 22050:.2f}s\nChord: {chords[frame]}\nFreq: {freqs[frame]:.0f} Hz")
     text.set_color('yellow')  # Bright text color
-=======
-    ax.bar(range(12), chroma[:, frame], color='lime', alpha=0.7)
-    ax.set_ylim(0, np.max(chroma))
-    ax.set_xlim(-0.5, 11.5)
-    ax.set_xticks(range(12))
-    ax.set_xticklabels(['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'])
-    ax.set_ylabel('Chroma Intensity')
-
-    text.set_text(f"Time: {frame * 512 / 22050:.2f}s\nChord: {chords[frame]}\nFreq: {freqs[frame]:.0f} Hz")
->>>>>>> 38017970b2ee8ad95ec8c4c0c89c77d4d8457d88
 
     return ax
 
@@ -118,10 +100,7 @@ def save_songbook(chords, directory, song_name):
 
     print(f"Songbook saved: {songbook_path}")
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 38017970b2ee8ad95ec8c4c0c89c77d4d8457d88
 def play_audio_and_show_analysis(file_path):
     global stop_audio
     stop_audio = False  # Reset stop flag
@@ -134,14 +113,9 @@ def play_audio_and_show_analysis(file_path):
     pygame.display.init()  # Initialize the display module
     pygame.mixer.music.load(file_path)
 
-<<<<<<< HEAD
     fig, ax = plt.subplots(figsize=(10, 6), facecolor='black')  # Black figure background
     text = ax.text(0.95, 0.95, '', horizontalalignment='right', verticalalignment='top', transform=ax.transAxes,
                    color='yellow')  # Bright text
-=======
-    fig, ax = plt.subplots(figsize=(10, 6))
-    text = ax.text(0.95, 0.95, '', horizontalalignment='right', verticalalignment='top', transform=ax.transAxes)
->>>>>>> 38017970b2ee8ad95ec8c4c0c89c77d4d8457d88
 
     anim = FuncAnimation(fig, update_plot, frames=chroma.shape[1],
                          fargs=(chroma, chords, freqs, ax, text),
@@ -176,8 +150,4 @@ def play_audio_and_show_analysis(file_path):
         plt.pause(0.1)
 
 
-<<<<<<< HEAD
 play_audio_and_show_analysis('input/Ed Sheeran - Shivers (Lyrics).mp3')
-=======
-play_audio_and_show_analysis('input/Ed Sheeran - Shivers (Lyrics).mp3')
->>>>>>> 38017970b2ee8ad95ec8c4c0c89c77d4d8457d88
